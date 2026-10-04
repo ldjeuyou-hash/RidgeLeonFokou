@@ -20,5 +20,5 @@ les betas associés aux données d'entree permettant d'obtenir la valeur reponse
 Fonction permettant de générer les betas a partir de la regression ridge pour un dataframe et une reponse donnee
 }
 \examples{
-  get_ridge_beta (X_input = X, Y_input = Y, lambda = 1)
+  get_ridge_beta (X_input = RidgeLeonFokou:::X, Y_input = RidgeLeonFokou:::Y, lambda = 1)
 }

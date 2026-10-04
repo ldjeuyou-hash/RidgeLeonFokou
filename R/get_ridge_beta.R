@@ -8,7 +8,7 @@
 #' @export
 #'
 #' @examples
-#'   get_ridge_beta (X_input = X, Y_input = Y, lambda = 1)
+#'   get_ridge_beta (X_input = RidgeLeonFokou:::X, Y_input = RidgeLeonFokou:::Y, lambda = 1)
 get_ridge_beta <- function(
     X_input = X,
     Y_input = Y,
