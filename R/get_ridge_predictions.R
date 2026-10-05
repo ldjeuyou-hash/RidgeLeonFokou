@@ -8,11 +8,11 @@
 #'
 #' @examples
 #'   get_ridge_prediction(
-#'   X_input = matrix(c(1.2, 3.4, 1, 4.5, 0.7), nrow = 5, ncol = 1),
+#'   X_input = matrix(c(1, 3.4, 1.2, 4.5, 0.7), nrow = 5, ncol = 1),
 #'    beta = matrix(1:5, nrow = 5, ncol = 1))
 get_ridge_prediction <- function(
     X_input,
     beta
 ){
-
+   t(beta) %*% X_input
 }
