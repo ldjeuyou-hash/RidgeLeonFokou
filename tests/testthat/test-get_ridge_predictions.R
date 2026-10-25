@@ -16,7 +16,7 @@ testthat::test_that("La prediction correspond bien au produit X * beta", {
   X <- matrix(
     c(1, 2, 3,
       4, 5, 6),
-    nrow = 2,
+    nrow = 3,
     byrow = TRUE
   )
 
