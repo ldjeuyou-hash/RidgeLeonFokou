@@ -6,6 +6,17 @@
 \usage{
 Folds(nfolds = 5, n)
 }
+\arguments{
+\item{nfolds}{nombre de folds pour la validation croisée}
+
+\item{n}{nombre d'observations}
+}
+\value{
+un vecteur de longueur n contenant les indices des folds pour chaque observation
+}
 \description{
 Title
+}
+\examples{
+ Folds(nfolds = 5, n = nrow(RidgeLeonFokou:::X))
 }

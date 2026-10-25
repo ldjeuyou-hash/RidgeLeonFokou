@@ -20,6 +20,8 @@ cv_ridge_R(
 \item{lambda_grid}{vecteur de valeurs de pénalité à tester}
 
 \item{nfolds}{nombre de folds pour la validation croisée}
+
+\item{folds}{vecteur de longueur n contenant les indices des folds pour chaque observation}
 }
 \value{
 les erreurs de validation croisée pour chaque valeur de pénalité
