@@ -10,20 +10,24 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
-// timesTwo
-NumericVector timesTwo(NumericVector x);
-RcppExport SEXP _RidgeLeonFokou_timesTwo(SEXP xSEXP) {
+// cv_ridge_cpp
+DataFrame cv_ridge_cpp(DataFrame X, NumericVector Y, NumericVector lambda_grid, int nfolds, IntegerVector folds);
+RcppExport SEXP _RidgeLeonFokou_cv_ridge_cpp(SEXP XSEXP, SEXP YSEXP, SEXP lambda_gridSEXP, SEXP nfoldsSEXP, SEXP foldsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(timesTwo(x));
+    Rcpp::traits::input_parameter< DataFrame >::type X(XSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type Y(YSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type lambda_grid(lambda_gridSEXP);
+    Rcpp::traits::input_parameter< int >::type nfolds(nfoldsSEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type folds(foldsSEXP);
+    rcpp_result_gen = Rcpp::wrap(cv_ridge_cpp(X, Y, lambda_grid, nfolds, folds));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_RidgeLeonFokou_timesTwo", (DL_FUNC) &_RidgeLeonFokou_timesTwo, 1},
+    {"_RidgeLeonFokou_cv_ridge_cpp", (DL_FUNC) &_RidgeLeonFokou_cv_ridge_cpp, 5},
     {NULL, NULL, 0}
 };
 
