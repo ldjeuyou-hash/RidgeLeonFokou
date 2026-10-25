@@ -29,3 +29,17 @@ testthat::test_that("La prediction correspond bien au produit X * beta", {
     expected
   )
 })
+
+testthat::test_that("La prediction accepte un data frame numerique", {
+  X <- data.frame(
+    x1 = c(1, 4),
+    x2 = c(2, 5),
+    x3 = c(3, 6)
+  )
+  beta <- matrix(c(1, -1, 2), nrow = 3, ncol = 1)
+
+  testthat::expect_equal(
+    get_ridge_prediction(X_input = X, beta = beta),
+    as.matrix(X) %*% beta
+  )
+})

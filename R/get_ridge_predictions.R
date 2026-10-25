@@ -14,5 +14,5 @@ get_ridge_prediction <- function(
     X_input,
     beta
 ){
-   X_input %*% beta
+   as.matrix(X_input) %*% beta
 }
