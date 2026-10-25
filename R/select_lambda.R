@@ -1,3 +1,14 @@
+#' Selectionne le meilleur lambda en fonction des parametres entrés
+#'
+#' @param X_input
+#' @param Y_input
+#' @param lambda_grid
+#' @param n_folds
+#'
+#' @returns
+#' @export
+#'
+#' @examples
 select_lambda <- function(
     X_input = X,
     Y_input = Y,
