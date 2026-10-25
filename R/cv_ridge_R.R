@@ -1,12 +1,13 @@
 #' Title
 #'
-#' @param nfolds
-#' @param n
+#' @param nfolds nombre de folds pour la validation croisée
+#' @param n nombre d'observations
 #'
-#' @returns
+#' @returns un vecteur de longueur n contenant les indices des folds pour chaque observation
 #' @export
 #'
 #' @examples
+#'  Folds(nfolds = 5, n = nrow(RidgeLeonFokou:::X))
 Folds <- function(
     nfolds = 5
     , n
@@ -20,6 +21,7 @@ Folds <- function(
 #' @param Y valeur réponse à modéliser
 #' @param lambda_grid vecteur de valeurs de pénalité à tester
 #' @param nfolds nombre de folds pour la validation croisée
+#' @param folds vecteur de longueur n contenant les indices des folds pour chaque observation
 #'
 #' @returns les erreurs de validation croisée pour chaque valeur de pénalité
 #' @export
@@ -50,9 +52,9 @@ cv_ridge_R <- function(
 
       # Ajustement sur les données d'entraînement
       beta <- get_ridge_beta(
-        X = X[train, ]
-        , Y = Y[train]
-        , Lambda = lambda_grid[j]
+        X_input = X[train, ]
+        , Y_input = Y[train]
+        , lambda = lambda_grid[j]
       )
 
       # Prédiction sur le fold de validation
