@@ -28,5 +28,5 @@ les erreurs de validation croisée pour chaque valeur de pénalité
 Fonction permettant de réaliser la validation croisée pour la regression ridge
 }
 \examples{
- cv_ridge_R(X = RidgeLeonFokou:::X, Y = RidgeLeonFokou:::Y, lambda_grid = 10^seq(from = -5, to = 5, by = 0.1), nfolds = 5)
+ cv_ridge_R(X = RidgeLeonFokou:::X, Y = RidgeLeonFokou:::Y, lambda_grid = 10^seq(from = -5, to = 5, by = 0.1), nfolds = 5, folds = Folds(nfolds = 5, n = nrow(RidgeLeonFokou:::X)))
 }
