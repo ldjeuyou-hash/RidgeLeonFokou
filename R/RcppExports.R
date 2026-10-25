@@ -2,6 +2,6 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 cv_ridge_cpp <- function(X, Y, lambda_grid, nfolds, folds) {
-    .Call('_RidgeLeonFokou_cv_ridge_cpp', PACKAGE = 'RidgeLeonFokou', X, Y, lambda_grid, nfolds, folds)
+    .Call(`_RidgeLeonFokou_cv_ridge_cpp`, X, Y, lambda_grid, nfolds, folds)
 }
 
