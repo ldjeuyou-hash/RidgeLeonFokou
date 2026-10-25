@@ -31,6 +31,7 @@ cv_ridge_R <- function(
     , Y
     , lambda_grid = 10^seq(from = -5, to = 5, by = 0.1)
     , nfolds
+    , folds
 ) {
 
   cv_error <- numeric(length(lambda_grid))
@@ -41,8 +42,6 @@ cv_ridge_R <- function(
     total_error <- 0
     total_n <- 0
 
-    folds <- Folds(nfolds = nfolds, n = nrow(X))
-
     # Boucle sur les folds
     for (k in seq_len(nfolds)) {
       
@@ -52,19 +51,19 @@ cv_ridge_R <- function(
       # Ajustement sur les données d'entraînement
       beta <- get_ridge_beta(
         X = X[train, ]
-        , y = Y[train]
+        , Y = Y[train]
         , Lambda = lambda_grid[j]
       )
 
       # Prédiction sur le fold de validation
       pred <- get_ridge_prediction(
-        X = X[test, ]
-        , fit = beta
+        X_input = X[test, ]
+        , beta = beta
       )
 
       # Erreur quadratique
       total_error <- total_error +
-        sum((y[test] - pred)^2)
+        sum((Y[test] - pred)^2)
 
       total_n <- total_n + sum(test)
     }
