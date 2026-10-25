@@ -1,9 +1,11 @@
-#' genere un graphique des erreurs de validation croisée en fonction de la valeur de pénalité lambda
+#' genere un graphique des erreurs de validation croisée
+#'  en fonction de la valeur de pénalité lambda
 #'
 #' @param cv_error vecteur des erreurs de validation croisée
 #' @param lambda_grid vecteur des valeurs de pénalité
 #'
-#' @returns un graphique des erreurs de validation croisée en fonction de la valeur de pénalité lambda
+#' @returns un graphique des erreurs de validation croisée
+#'  en fonction de la valeur de pénalité lambda
 #' @export
 #'
 #' @examples
