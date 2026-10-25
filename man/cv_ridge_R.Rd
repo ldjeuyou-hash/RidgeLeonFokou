@@ -2,7 +2,8 @@
 % Please edit documentation in R/cv_ridge_R.R
 \name{cv_ridge_R}
 \alias{cv_ridge_R}
-\title{Fonction permettant de réaliser la validation croisée pour la regression ridge}
+\title{Fonction permettant de réaliser la validation croisée pour
+la regression ridge}
 \usage{
 cv_ridge_R(
   X,
@@ -21,14 +22,20 @@ cv_ridge_R(
 
 \item{nfolds}{nombre de folds pour la validation croisée}
 
-\item{folds}{vecteur de longueur n contenant les indices des folds pour chaque observation}
+\item{folds}{vecteur de longueur n contenant les indices des
+folds pour chaque observation}
 }
 \value{
 les erreurs de validation croisée pour chaque valeur de pénalité
 }
 \description{
-Fonction permettant de réaliser la validation croisée pour la regression ridge
+Fonction permettant de réaliser la validation croisée pour
+la regression ridge
 }
 \examples{
- cv_ridge_R(X = RidgeLeonFokou:::X, Y = RidgeLeonFokou:::Y, lambda_grid = 10^seq(from = -5, to = 5, by = 0.1), nfolds = 5, folds = Folds(nfolds = 5, n = nrow(RidgeLeonFokou:::X)))
+ cv_ridge_R(X = RidgeLeonFokou:::X
+, Y = RidgeLeonFokou:::Y
+, lambda_grid = 10^seq(from = -5, to = 5, by = 0.1)
+, nfolds = 5, folds = Folds(nfolds = 5
+, n = nrow(RidgeLeonFokou:::X)))
 }

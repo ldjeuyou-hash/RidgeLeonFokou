@@ -2,7 +2,8 @@
 % Please edit documentation in R/get_ridge_beta.R
 \name{get_ridge_beta}
 \alias{get_ridge_beta}
-\title{Fonction permettant de générer les betas a partir de la regression ridge pour un dataframe et une reponse donnee}
+\title{Fonction permettant de générer les betas a partir de la
+regression ridge pour un dataframe et une reponse donnee}
 \usage{
 get_ridge_beta(X_input = X, Y_input = Y, lambda = 2)
 }
@@ -14,11 +15,15 @@ get_ridge_beta(X_input = X, Y_input = Y, lambda = 2)
 \item{lambda}{Penalite a apporter sur la fonction de perte}
 }
 \value{
-les betas associés aux données d'entree permettant d'obtenir la valeur reponse selon ridge
+les betas associés aux données d'entree permettant
+d'obtenir la valeur reponse selon ridge
 }
 \description{
-Fonction permettant de générer les betas a partir de la regression ridge pour un dataframe et une reponse donnee
+Fonction permettant de générer les betas a partir de la
+regression ridge pour un dataframe et une reponse donnee
 }
 \examples{
-  get_ridge_beta (X_input = RidgeLeonFokou:::X, Y_input = RidgeLeonFokou:::Y, lambda = 1)
+  get_ridge_beta (X_input = RidgeLeonFokou:::X
+, Y_input = RidgeLeonFokou:::Y
+, lambda = 1)
 }

@@ -12,7 +12,7 @@ plot_errors <- function(
     cv_error
     , lambda_grid
 ) {
-    ggplot2::ggplot(data = data.frame(lambda = lambda_grid, cv_error = cv_error), mapping = ggplot2::aes(x = lambda, y = cv_error)) +
+    ggplot2::ggplot(mapping = ggplot2::aes(x = lambda_grid, y = cv_error)) +
     ggplot2::geom_line() +
     ggplot2::scale_x_log10() +
     ggplot2::labs(x = "Lambda", y = "Cross-Validation Error") +

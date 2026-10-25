@@ -12,7 +12,8 @@ Folds(nfolds = 5, n)
 \item{n}{nombre d'observations}
 }
 \value{
-un vecteur de longueur n contenant les indices des folds pour chaque observation
+un vecteur de longueur n contenant les
+indices des folds pour chaque observation
 }
 \description{
 Title

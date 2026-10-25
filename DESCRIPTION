@@ -16,8 +16,7 @@ Suggests:
 Config/testthat/edition: 3
 Imports: 
     ggplot2,
-    Rcpp,
-    stats
+    Rcpp
 LinkingTo: 
     Rcpp
 URL: https://github.com/ldjeuyou-hash/RidgeLeonFokou
