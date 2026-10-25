@@ -36,8 +36,8 @@ Folds <- function(
 #' , nfolds = 5, folds = Folds(nfolds = 5
 #' , n = nrow(RidgeLeonFokou:::X)))
 cv_ridge_R <- function(
-    X
-    , Y
+    X = X
+    , Y = Y
     , lambda_grid = 10^seq(from = -5, to = 5, by = 0.1)
     , nfolds
     , folds
