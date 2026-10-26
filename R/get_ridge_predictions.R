@@ -12,7 +12,7 @@
 #'    beta = matrix(1:5, nrow = 5, ncol = 1))
 get_ridge_prediction <- function(
     X_input = X,
-    beta
+    beta = get_ridge_beta(X_input = X, Y_input = Y, lambda = 1)
 ){
    as.matrix(X_input) %*% beta
 }
