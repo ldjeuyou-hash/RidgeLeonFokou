@@ -36,11 +36,11 @@ Folds <- function(
 #' , nfolds = 5, folds = Folds(nfolds = 5
 #' , n = nrow(RidgeLeonFokou:::X)))
 cv_ridge_R <- function(
-    X = X
-    , Y = Y
+    X_input = X
+    , Y_input = Y
     , lambda_grid = 10^seq(from = -5, to = 5, by = 0.1)
-    , nfolds
-    , folds
+    , nfolds = 5
+    , folds = Folds(nfolds = nfolds, n = nrow(X))
 ) {
 
   cv_error <- numeric(length(lambda_grid))
@@ -59,20 +59,20 @@ cv_ridge_R <- function(
 
       # Ajustement sur les données d'entraînement
       beta <- get_ridge_beta(
-        X_input = X[train, ]
-        , Y_input = Y[train]
+        X_input = X_input[train, ]
+        , Y_input = Y_input[train]
         , lambda = lambda_grid[j]
       )
 
       # Prédiction sur le fold de validation
       pred <- get_ridge_prediction(
-        X_input = X[test, ]
+        X_input = X_input[test, ]
         , beta = beta
       )
 
       # Erreur quadratique
       total_error <- total_error +
-        sum((Y[test] - pred)^2)
+        sum((Y_input[test] - pred)^2)
 
       total_n <- total_n + sum(test)
     }
