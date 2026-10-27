@@ -1,8 +1,79 @@
 #include <Rcpp.h>
 
+#include <algorithm>
 #include <cmath>
+#include <vector>
 
 using namespace Rcpp;
+
+static std::vector<double> solve_ridge_system(
+    const std::vector<double>& gram,
+    const std::vector<double>& xty,
+    int dimension,
+    double lambda
+) {
+  std::vector<double> matrix(gram);
+  std::vector<double> rhs(xty);
+  for (int column = 0; column < dimension; ++column) {
+    matrix[column * dimension + column] += lambda;
+  }
+
+  for (int pivot_column = 0; pivot_column < dimension; ++pivot_column) {
+    int pivot_row = pivot_column;
+    double pivot_size = std::fabs(
+        matrix[pivot_row * dimension + pivot_column]
+    );
+
+    for (int row = pivot_column + 1; row < dimension; ++row) {
+      const double candidate = std::fabs(
+          matrix[row * dimension + pivot_column]
+      );
+      if (candidate > pivot_size) {
+        pivot_size = candidate;
+        pivot_row = row;
+      }
+    }
+
+    if (pivot_size == 0.0 || !std::isfinite(pivot_size)) {
+      stop("Le systeme ridge est singulier pour une valeur de lambda donnee.");
+    }
+
+    if (pivot_row != pivot_column) {
+      for (int column = pivot_column; column < dimension; ++column) {
+        std::swap(
+            matrix[pivot_column * dimension + column],
+            matrix[pivot_row * dimension + column]
+        );
+      }
+      std::swap(rhs[pivot_column], rhs[pivot_row]);
+    }
+
+    const double pivot = matrix[pivot_column * dimension + pivot_column];
+    for (int row = pivot_column + 1; row < dimension; ++row) {
+      const double factor =
+          matrix[row * dimension + pivot_column] / pivot;
+      matrix[row * dimension + pivot_column] = 0.0;
+      for (int column = pivot_column + 1; column < dimension; ++column) {
+        matrix[row * dimension + column] -=
+            factor * matrix[pivot_column * dimension + column];
+      }
+      rhs[row] -= factor * rhs[pivot_column];
+    }
+  }
+
+  for (int row = dimension - 1; row >= 0; --row) {
+    for (int column = row + 1; column < dimension; ++column) {
+      rhs[row] -= matrix[row * dimension + column] * rhs[column];
+    }
+    const double diagonal = matrix[row * dimension + row];
+    if (diagonal == 0.0 || !std::isfinite(diagonal)) {
+      stop("Le systeme ridge est singulier pour une valeur de lambda donnee.");
+    }
+    rhs[row] /= diagonal;
+  }
+
+  return rhs;
+}
 
 // [[Rcpp::export]]
 DataFrame cv_ridge_cpp(
@@ -62,10 +133,6 @@ DataFrame cv_ridge_cpp(
     }
   }
 
-  Environment package_env = Environment::namespace_env("RidgeLeonFokou");
-  Function get_ridge_beta = package_env["get_ridge_beta"];
-  Function get_ridge_prediction = package_env["get_ridge_prediction"];
-
   NumericVector cv_error(lambda_grid.size());
 
   for (R_xlen_t lambda_index = 0;
@@ -75,73 +142,65 @@ DataFrame cv_ridge_cpp(
     if (!std::isfinite(lambda) || lambda < 0.0) {
       stop("Les valeurs de lambda doivent etre finies et positives ou nulles.");
     }
+  }
 
-    double total_error = 0.0;
-    int total_n = 0;
+  std::fill(cv_error.begin(), cv_error.end(), 0.0);
+  int total_n = 0;
 
-    for (int fold = 1; fold <= nfolds; ++fold) {
-      int train_n = 0;
-      int test_n = 0;
-      for (int row = 0; row < n; ++row) {
-        if (folds[row] == fold) {
-          ++test_n;
-        } else {
-          ++train_n;
-        }
-      }
-      if (test_n == 0) {
+  for (int fold = 1; fold <= nfolds; ++fold) {
+    std::vector<int> test_rows;
+    std::vector<double> gram(p * p, 0.0);
+    std::vector<double> xty(p, 0.0);
+
+    for (int row = 0; row < n; ++row) {
+      if (folds[row] == fold) {
+        test_rows.push_back(row);
         continue;
       }
 
-      NumericMatrix x_train(train_n, p);
-      NumericVector y_train(train_n);
-      NumericMatrix x_test(test_n, p);
-      NumericVector y_test(test_n);
-      int train_row = 0;
-      int test_row = 0;
-
-      for (int row = 0; row < n; ++row) {
-        if (folds[row] == fold) {
-          y_test[test_row] = Y[row];
-          for (int column = 0; column < p; ++column) {
-            x_test(test_row, column) = x(row, column);
-          }
-          ++test_row;
-        } else {
-          y_train[train_row] = Y[row];
-          for (int column = 0; column < p; ++column) {
-            x_train(train_row, column) = x(row, column);
-          }
-          ++train_row;
+      for (int column = 0; column < p; ++column) {
+        const double x_column = x(row, column);
+        xty[column] += x_column * Y[row];
+        for (int other_column = 0; other_column < p; ++other_column) {
+          gram[column * p + other_column] +=
+              x_column * x(row, other_column);
         }
       }
-
-      SEXP beta = get_ridge_beta(
-          Named("X_input") = x_train,
-          Named("Y_input") = y_train,
-          Named("lambda") = lambda
-      );
-
-      NumericMatrix predictions = get_ridge_prediction(
-          Named("X_input") = x_test,
-          Named("beta") = beta
-      );
-
-      if (predictions.nrow() != test_n || predictions.ncol() != 1) {
-        stop("get_ridge_prediction doit retourner une prediction par observation.");
-      }
-
-      for (int row = 0; row < test_n; ++row) {
-        const double residual = y_test[row] - predictions(row, 0);
-        total_error += residual * residual;
-      }
-      total_n += test_n;
     }
 
-    if (total_n == 0) {
-      stop("Aucune observation utilisee pour la validation.");
+    const int test_n = static_cast<int>(test_rows.size());
+    if (test_n == 0) {
+      continue;
     }
-    cv_error[lambda_index] = total_error / total_n;
+    total_n += test_n;
+
+    for (R_xlen_t lambda_index = 0;
+         lambda_index < lambda_grid.size();
+         ++lambda_index) {
+      const double lambda = lambda_grid[lambda_index];
+      const std::vector<double> coefficients =
+          solve_ridge_system(gram, xty, p, lambda);
+
+      double fold_error = 0.0;
+      for (int row : test_rows) {
+        double prediction = 0.0;
+        for (int column = 0; column < p; ++column) {
+          prediction += x(row, column) * coefficients[column];
+        }
+        const double residual = Y[row] - prediction;
+        fold_error += residual * residual;
+      }
+      cv_error[lambda_index] += fold_error;
+    }
+  }
+
+  if (total_n == 0) {
+    stop("Aucune observation utilisee pour la validation.");
+  }
+  for (R_xlen_t lambda_index = 0;
+       lambda_index < lambda_grid.size();
+       ++lambda_index) {
+    cv_error[lambda_index] /= total_n;
   }
 
   return DataFrame::create(
