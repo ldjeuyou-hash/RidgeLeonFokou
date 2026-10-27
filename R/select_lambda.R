@@ -14,16 +14,16 @@
 #'  , Y_input = RidgeLeonFokou:::Y
 #' )
 select_lambda <- function(
-    X_input
-    , Y_input
+    X_input = X
+    , Y_input = Y
     , lambda_grid = 10^seq(from = -5, to = 5, by = 0.1)
     , n_folds = 5
 ){
   folds <- Folds(nfolds = n_folds, n = nrow(X_input))
 
   cv_results <- cv_ridge_R(
-    X = X_input,
-    Y = Y_input,
+    X_input = X_input,
+    Y_input = Y_input,
     lambda_grid = lambda_grid,
     nfolds = n_folds,
     folds = folds

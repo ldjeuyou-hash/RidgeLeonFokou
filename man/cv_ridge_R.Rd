@@ -6,17 +6,17 @@
 la regression ridge}
 \usage{
 cv_ridge_R(
-  X,
-  Y,
+  X_input = X,
+  Y_input = Y,
   lambda_grid = 10^seq(from = -5, to = 5, by = 0.1),
-  nfolds,
-  folds
+  nfolds = 5,
+  folds = Folds(nfolds = nfolds, n = nrow(X))
 )
 }
 \arguments{
-\item{X}{dataframe de données}
+\item{X_input}{dataframe de données}
 
-\item{Y}{valeur réponse à modéliser}
+\item{Y_input}{valeur réponse à modéliser}
 
 \item{lambda_grid}{vecteur de valeurs de pénalité à tester}
 
@@ -33,8 +33,8 @@ Fonction permettant de réaliser la validation croisée pour
 la regression ridge
 }
 \examples{
- cv_ridge_R(X = RidgeLeonFokou:::X
-, Y = RidgeLeonFokou:::Y
+ cv_ridge_R(X_input = RidgeLeonFokou:::X
+, Y_input = RidgeLeonFokou:::Y
 , lambda_grid = 10^seq(from = -5, to = 5, by = 0.1)
 , nfolds = 5, folds = Folds(nfolds = 5
 , n = nrow(RidgeLeonFokou:::X)))

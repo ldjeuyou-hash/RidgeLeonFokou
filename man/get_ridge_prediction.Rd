@@ -4,7 +4,10 @@
 \alias{get_ridge_prediction}
 \title{Fonction Permettant de generer des predictions pour les betas generes par la regression ridge}
 \usage{
-get_ridge_prediction(X_input, beta)
+get_ridge_prediction(
+  X_input = X,
+  beta = get_ridge_beta(X_input = X, Y_input = Y, lambda = 1)
+)
 }
 \arguments{
 \item{X_input}{dataframe de données}

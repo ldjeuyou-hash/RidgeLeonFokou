@@ -19,8 +19,8 @@ Folds <- function(
 #' Fonction permettant de réaliser la validation croisée pour
 #'  la regression ridge
 #'
-#' @param X dataframe de données
-#' @param Y valeur réponse à modéliser
+#' @param X_input dataframe de données
+#' @param Y_input valeur réponse à modéliser
 #' @param lambda_grid vecteur de valeurs de pénalité à tester
 #' @param nfolds nombre de folds pour la validation croisée
 #' @param folds vecteur de longueur n contenant les indices des
@@ -30,8 +30,8 @@ Folds <- function(
 #' @export
 #'
 #' @examples
-#'  cv_ridge_R(X = RidgeLeonFokou:::X
-#' , Y = RidgeLeonFokou:::Y
+#'  cv_ridge_R(X_input = RidgeLeonFokou:::X
+#' , Y_input = RidgeLeonFokou:::Y
 #' , lambda_grid = 10^seq(from = -5, to = 5, by = 0.1)
 #' , nfolds = 5, folds = Folds(nfolds = 5
 #' , n = nrow(RidgeLeonFokou:::X)))

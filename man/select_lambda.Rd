@@ -5,8 +5,8 @@
 \title{Selectionne le meilleur lambda en fonction des parametres entrés}
 \usage{
 select_lambda(
-  X_input,
-  Y_input,
+  X_input = X,
+  Y_input = Y,
   lambda_grid = 10^seq(from = -5, to = 5, by = 0.1),
   n_folds = 5
 )
