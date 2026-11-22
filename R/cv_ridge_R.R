@@ -8,7 +8,7 @@
 #' @export
 #'
 #' @examples
-#'  Folds(nfolds = 5, n = nrow(RidgeLeonFokou:::X))
+#'  Folds(nfolds = 5, n = nrow(RidgeLeonFokou::X))
 Folds <- function(
     nfolds = 5
     , n
@@ -30,17 +30,17 @@ Folds <- function(
 #' @export
 #'
 #' @examples
-#'  cv_ridge_R(X_input = RidgeLeonFokou:::X
-#' , Y_input = RidgeLeonFokou:::Y
+#'  cv_ridge_R(X_input = RidgeLeonFokou::X
+#' , Y_input = RidgeLeonFokou::Y
 #' , lambda_grid = 10^seq(from = -5, to = 5, by = 0.1)
 #' , nfolds = 5, folds = Folds(nfolds = 5
-#' , n = nrow(RidgeLeonFokou:::X)))
+#' , n = nrow(RidgeLeonFokou::X)))
 cv_ridge_R <- function(
-    X_input = X
-    , Y_input = Y
+    X_input = RidgeLeonFokou::X
+    , Y_input = RidgeLeonFokou::Y
     , lambda_grid = 10^seq(from = -5, to = 5, by = 0.1)
     , nfolds = 5
-    , folds = Folds(nfolds = nfolds, n = nrow(X))
+    , folds = Folds(nfolds = nfolds, n = nrow(RidgeLeonFokou::X))
 ) {
 
   cv_error <- numeric(length(lambda_grid))

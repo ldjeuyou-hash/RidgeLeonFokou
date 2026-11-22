@@ -19,5 +19,5 @@ indices des folds pour chaque observation
 Title
 }
 \examples{
- Folds(nfolds = 5, n = nrow(RidgeLeonFokou:::X))
+ Folds(nfolds = 5, n = nrow(RidgeLeonFokou::X))
 }

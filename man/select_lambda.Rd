@@ -5,8 +5,8 @@
 \title{Selectionne le meilleur lambda en fonction des parametres entrés}
 \usage{
 select_lambda(
-  X_input = X,
-  Y_input = Y,
+  X_input = RidgeLeonFokou::X,
+  Y_input = RidgeLeonFokou::Y,
   lambda_grid = 10^seq(from = -5, to = 5, by = 0.1),
   n_folds = 5
 )
@@ -28,7 +28,7 @@ l'erreur de validation croisée correspondante
 Selectionne le meilleur lambda en fonction des parametres entrés
 }
 \examples{
-select_lambda(X_input = RidgeLeonFokou:::X
- , Y_input = RidgeLeonFokou:::Y
+select_lambda(X_input = RidgeLeonFokou::X
+ , Y_input = RidgeLeonFokou::Y
 )
 }

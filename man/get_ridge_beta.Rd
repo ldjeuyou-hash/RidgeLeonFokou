@@ -5,7 +5,11 @@
 \title{Fonction permettant de générer les betas a partir de la
 regression ridge pour un dataframe et une reponse donnee}
 \usage{
-get_ridge_beta(X_input = X, Y_input = Y, lambda = 2)
+get_ridge_beta(
+  X_input = RidgeLeonFokou::X,
+  Y_input = RidgeLeonFokou::Y,
+  lambda = 2
+)
 }
 \arguments{
 \item{X_input}{dataframe de données}
@@ -23,7 +27,7 @@ Fonction permettant de générer les betas a partir de la
 regression ridge pour un dataframe et une reponse donnee
 }
 \examples{
-  get_ridge_beta (X_input = RidgeLeonFokou:::X
-, Y_input = RidgeLeonFokou:::Y
+  get_ridge_beta (X_input = RidgeLeonFokou::X
+, Y_input = RidgeLeonFokou::Y
 , lambda = 1)
 }

@@ -5,8 +5,9 @@
 \title{Fonction Permettant de generer des predictions pour les betas generes par la regression ridge}
 \usage{
 get_ridge_prediction(
-  X_input = X,
-  beta = get_ridge_beta(X_input = X, Y_input = Y, lambda = 1)
+  X_input = RidgeLeonFokou::X,
+  beta = get_ridge_beta(X_input = RidgeLeonFokou::X, Y_input = RidgeLeonFokou::Y, lambda
+    = 1)
 )
 }
 \arguments{

@@ -6,11 +6,11 @@
 la regression ridge}
 \usage{
 cv_ridge_R(
-  X_input = X,
-  Y_input = Y,
+  X_input = RidgeLeonFokou::X,
+  Y_input = RidgeLeonFokou::Y,
   lambda_grid = 10^seq(from = -5, to = 5, by = 0.1),
   nfolds = 5,
-  folds = Folds(nfolds = nfolds, n = nrow(X))
+  folds = Folds(nfolds = nfolds, n = nrow(RidgeLeonFokou::X))
 )
 }
 \arguments{
@@ -33,9 +33,9 @@ Fonction permettant de réaliser la validation croisée pour
 la regression ridge
 }
 \examples{
- cv_ridge_R(X_input = RidgeLeonFokou:::X
-, Y_input = RidgeLeonFokou:::Y
+ cv_ridge_R(X_input = RidgeLeonFokou::X
+, Y_input = RidgeLeonFokou::Y
 , lambda_grid = 10^seq(from = -5, to = 5, by = 0.1)
 , nfolds = 5, folds = Folds(nfolds = 5
-, n = nrow(RidgeLeonFokou:::X)))
+, n = nrow(RidgeLeonFokou::X)))
 }

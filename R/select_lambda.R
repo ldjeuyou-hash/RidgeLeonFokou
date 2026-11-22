@@ -10,12 +10,12 @@
 #' @export
 #'
 #' @examples
-#' select_lambda(X_input = RidgeLeonFokou:::X
-#'  , Y_input = RidgeLeonFokou:::Y
+#' select_lambda(X_input = RidgeLeonFokou::X
+#'  , Y_input = RidgeLeonFokou::Y
 #' )
 select_lambda <- function(
-    X_input = X
-    , Y_input = Y
+    X_input = RidgeLeonFokou::X
+    , Y_input = RidgeLeonFokou::Y
     , lambda_grid = 10^seq(from = -5, to = 5, by = 0.1)
     , n_folds = 5
 ){
