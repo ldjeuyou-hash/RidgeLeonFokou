@@ -2,12 +2,12 @@ testthat::test_that("La prediction est nulle si les betas sont nuls", {
   X <- matrix(c(1, 2,
                 3, 4), ncol = 2, byrow = TRUE)
 
-  beta <- matrix(0, nrow = 2, ncol = 1)
+  beta <- matrix(0, nrow = 3, ncol = 1)
 
   expected <- matrix(c(0, 0), nrow = 2, ncol = 1)
 
   testthat::expect_equal(
-    get_ridge_prediction(X_input = X, beta = beta),
+    unname(get_ridge_prediction(X_input = X, beta = beta)),
     expected
   )
 })
@@ -20,9 +20,9 @@ testthat::test_that("La prediction correspond bien au produit X * beta", {
     byrow = TRUE
   )
 
-  beta <- matrix(c(1, -1), nrow = 2, ncol = 1)
-
-  expected <- X %*% beta
+  beta <- matrix(c(1, -1, 2), nrow = 3, ncol = 1)
+  df <- stats::model.matrix(~ ., data = as.data.frame(X))
+  expected <- df %*% beta
 
   testthat::expect_equal(
     get_ridge_prediction(X_input = X, beta = beta),
@@ -36,10 +36,10 @@ testthat::test_that("La prediction accepte un data frame numerique", {
     x2 = c(2, 5),
     x3 = c(3, 6)
   )
-  beta <- matrix(c(1, -1, 2), nrow = 3, ncol = 1)
+  beta <- matrix(c(1, -1, 2, 3), nrow = 4, ncol = 1)
 
   testthat::expect_equal(
     get_ridge_prediction(X_input = X, beta = beta),
-    as.matrix(X) %*% beta
+    as.matrix(stats::model.matrix(~ ., data = as.data.frame(X))) %*% beta
   )
 })

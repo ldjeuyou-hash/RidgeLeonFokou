@@ -14,5 +14,6 @@ get_ridge_prediction <- function(
     X_input = RidgeLeonFokou::X,
     beta = get_ridge_beta(X_input = RidgeLeonFokou::X, Y_input = RidgeLeonFokou::Y, lambda = 1)
 ){
-   as.matrix(X_input) %*% beta
+    df <- stats::model.matrix(~ ., data = as.data.frame(X_input))
+    return(as.matrix(df) %*% beta)
 }

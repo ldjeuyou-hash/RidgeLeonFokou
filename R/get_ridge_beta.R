@@ -18,7 +18,6 @@ get_ridge_beta <- function(
     Y_input = RidgeLeonFokou::Y,
     lambda = 2
 ) {
-
-  solve(t(X_input) %*% X_input + lambda * diag(ncol(X_input))) %*% t(X_input) %*% Y_input
-
+  df <- stats::model.matrix(~ ., data = as.data.frame(X_input))
+  solve(t(df) %*% df + lambda * diag(ncol(df))) %*% t(df) %*% Y_input
 }

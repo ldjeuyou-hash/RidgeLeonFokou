@@ -84,9 +84,10 @@ DataFrame cv_ridge_cpp(
     IntegerVector folds
 ) {
   const int n = X.nrows();
-  const int p = X.size();
+  const int feature_count = X.size();
+  const int p = feature_count + 1;
 
-  if (p == 0) {
+  if (feature_count == 0) {
     stop("X doit contenir au moins une colonne numerique.");
   }
   if (Y.size() != n || folds.size() != n) {
@@ -97,7 +98,10 @@ DataFrame cv_ridge_cpp(
   }
 
   NumericMatrix x(n, p);
-  for (int column = 0; column < p; ++column) {
+  for (int row = 0; row < n; ++row) {
+    x(row, 0) = 1.0;
+  }
+  for (int column = 0; column < feature_count; ++column) {
     SEXP x_column = X[column];
     if (!Rf_isNumeric(x_column) || Rf_isFactor(x_column)) {
       stop("Toutes les colonnes de X doivent etre numeriques et non factorielles.");
@@ -120,7 +124,7 @@ DataFrame cv_ridge_cpp(
       if (!std::isfinite(value)) {
         stop("X ne doit pas contenir de valeurs non finies.");
       }
-      x(row, column) = value;
+      x(row, column + 1) = value;
     }
   }
 

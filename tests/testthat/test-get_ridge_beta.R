@@ -7,7 +7,7 @@ testthat::test_that("Verifions que le nombre de beta est egal au nombre de colon
         lambda = 1
       )
     ),
-    ncol(RidgeLeonFokou::X)
+    ncol(stats::model.matrix(~ ., data = as.data.frame(RidgeLeonFokou::X)))
   )
 })
 
@@ -22,10 +22,11 @@ testthat::test_that("Si Y est nul, les betas sont nuls", {
 
   Y <- c(0, 0, 0)
 
-  expected <- matrix(0, nrow = ncol(X), ncol = 1)
+  design_matrix <- stats::model.matrix(~ ., data = as.data.frame(X))
+  expected <- matrix(0, nrow = ncol(design_matrix), ncol = 1)
 
   testthat::expect_equal(
-    get_ridge_beta(X_input = X, Y_input = Y, lambda = 1),
+    unname(get_ridge_beta(X_input = X, Y_input = Y, lambda = 1)),
     expected
   )
 })
