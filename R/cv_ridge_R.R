@@ -25,9 +25,8 @@ Folds <- function(
 #' @param nfolds nombre de folds pour la validation croisée
 #' @param folds vecteur de longueur n contenant les indices des
 #'  folds pour chaque observation
-#'
+#' @export 
 #' @returns les erreurs de validation croisée pour chaque valeur de pénalité
-#' @export
 #'
 #' @examples
 #'  cv_ridge_R(X_input = RidgeLeonFokou::X

@@ -4,10 +4,9 @@
 #' @param Y_input valeur réponse à modéliser
 #' @param lambda_grid vecteur des valeurs de pénalité
 #' @param n_folds nombre de plis pour la validation croisée
-#'
+#' @export
 #' @returns le meilleur lambda sélectionné avec
 #'  l'erreur de validation croisée correspondante
-#' @export
 #'
 #' @examples
 #' select_lambda(X_input = RidgeLeonFokou::X
@@ -21,9 +20,9 @@ select_lambda <- function(
 ){
   folds <- Folds(nfolds = n_folds, n = nrow(X_input))
 
-  cv_results <- cv_ridge_R(
-    X_input = X_input,
-    Y_input = Y_input,
+  cv_results <- cv_ridge_cpp(
+    X = X_input,
+    Y = Y_input,
     lambda_grid = lambda_grid,
     nfolds = n_folds,
     folds = folds
