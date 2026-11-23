@@ -1,4 +1,15 @@
+
+#' Title
+#'
+#' @param X_input
+#' @param Y_input
+#' @param lambda_grid
+#' @param n_folds
+#' @param name
+#'
+#' @returns
 #' @export
+#'
 ridge <- function(
     X_input = RidgeLeonFokou::X
     ,Y_input = RidgeLeonFokou::Y
