@@ -18,9 +18,9 @@ print.ridge <- function(
     "\n",
     sep = ""
   )
-   cat("Lambda optimal obtenu par validation croisée:", x$ideal_lambda, "\n")
-   cat("Erreur de validation croisée minimale:", x$min_cv_error, "\n")
-   cat("Nombre de folds pour la validation croisée:", x$n_folds, "\n")
+   cat("Lambda optimal obtenu par validation croisee:", x$ideal_lambda, "\n")
+   cat("Erreur de validation croisee minimale:", x$min_cv_error, "\n")
+   cat("Nombre de folds pour la validation croisee:", x$n_folds, "\n")
 
    invisible(x)
 }
