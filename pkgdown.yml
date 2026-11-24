@@ -2,9 +2,8 @@ pandoc: 3.8.3
 pkgdown: 2.2.1
 pkgdown_sha: ~
 articles:
-  articles/analyse: analyse.html
   introduction: introduction.html
-last_built: 2026-11-24T22:59Z
+last_built: 2026-11-24T23:07Z
 urls:
   reference: https://ldjeuyou-hash.github.io/RidgeLeonFokou/reference
   article: https://ldjeuyou-hash.github.io/RidgeLeonFokou/articles
