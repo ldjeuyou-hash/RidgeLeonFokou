@@ -62,7 +62,7 @@ data("Y")
 ridge_model <- ridge(
   X_input = X
   , Y_input = Y
-  , lambda_grid = c(0.1, 1, 10)
+  , lambda_grid = seq(0.1, 10, length.out = 100)
   , name = "ridge_model_example"
   , n_folds = 5
 )

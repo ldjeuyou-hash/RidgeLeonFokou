@@ -1,15 +1,15 @@
 #' @export
 predict.ridge <- function(
     object
-    , X = object$X
+    , dt = object$X
     , ...
 ) {
     stopifnot(
         inherits(object, "ridge"),
-        is.matrix(X) || is.data.frame(X) || is.vector(X) || is.numeric(X)
+        is.matrix(dt) || is.data.frame(dt) || is.vector(dt) || is.numeric(dt)
     )
     
     beta <- object$betas
-    return(get_ridge_prediction(X_input = X, beta = beta))
+    return(get_ridge_prediction(X_input = dt, beta = beta))
   
 }
