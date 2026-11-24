@@ -73,7 +73,7 @@ data("Y")
 ridge_model <- ridge(
   X_input = X
   , Y_input = Y
-  , lambda_grid = c(0.1, 1, 10)
+  , lambda_grid = seq(0.1, 10, length.out = 100)
   , name = "ridge_model_example"
   , n_folds = 5
 )
@@ -145,9 +145,9 @@ print(ridge_model)
 #> Nom: ridge_model_example 
 #> Nombre de predicteurs: 4 
 #> Nombre d'observations: 1000 
-#> Domaine de Lambda : [0.1, 10]  avec 3 valeurs et pas de 3.3
-#> Lambda optimal obtenu par validation croisee: 1 
-#> Erreur de validation croisee minimale: 0.4376131 
+#> Domaine de Lambda : [0.1, 10]  avec 100 valeurs et pas de 0.099
+#> Lambda optimal obtenu par validation croisee: 0.7 
+#> Erreur de validation croisee minimale: 0.4376129 
 #> Nombre de folds pour la validation croisee: 5
 ```
 
@@ -166,11 +166,12 @@ new_data <- X[1:5, ]  # Utiliser les 5 premières observations
 predictions <- predict(object = ridge_model, X = new_data)
 head(predictions)
 #>         [,1]
-#> 1 78.8713440
-#> 2  0.8426937
-#> 3 21.2868170
-#> 4 38.5204649
-#> 5 16.3686934
+#> 1 78.8706094
+#> 2  0.8430522
+#> 3 21.2870103
+#> 4 38.5205570
+#> 5 16.3690422
+#> 6 96.8250517
 ```
 
 Il est tout a fait possible de faire des prédictions sur de nouvelles
@@ -189,8 +190,13 @@ d’utilisation de cette fonction :
 new_data <- c(1, 2, 3, 4)
 predictions <- predict(object = ridge_model, X = new_data)
 head(predictions)
-#>             [,1]
-#> X_input 12.76577
+#>         [,1]
+#> 1 78.8706094
+#> 2  0.8430522
+#> 3 21.2870103
+#> 4 38.5205570
+#> 5 16.3690422
+#> 6 96.8250517
 ```
 
 Si par contre aucune donnée n’est fournie, la fonction
@@ -204,12 +210,12 @@ nouvelles données :
 predictions <- predict(object = ridge_model)
 head(predictions)
 #>         [,1]
-#> 1 78.8713440
-#> 2  0.8426937
-#> 3 21.2868170
-#> 4 38.5204649
-#> 5 16.3686934
-#> 6 96.8254454
+#> 1 78.8706094
+#> 2  0.8430522
+#> 3 21.2870103
+#> 4 38.5205570
+#> 5 16.3690422
+#> 6 96.8250517
 ```
 
 #### Visualisation des erreurs de validation croisée

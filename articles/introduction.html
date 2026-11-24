@@ -19,7 +19,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">RidgeLeonFokou</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,6 +35,7 @@
 <li><a class="dropdown-item" href="../articles/introduction.html">Introduction a RidgeLeonFokou</a></li>
   </ul>
 </li>
+<li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul>
 <ul class="navbar-nav">
 <li class="nav-item"><form class="form-inline" role="search">
@@ -131,7 +132,7 @@ fonction avec les données simulées <code>X</code> et <code>Y</code>
 <span><span class="va">ridge_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ridge.html">ridge</a></span><span class="op">(</span></span>
 <span>  X_input <span class="op">=</span> <span class="va">X</span></span>
 <span>  , Y_input <span class="op">=</span> <span class="va">Y</span></span>
-<span>  , lambda_grid <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.1</span>, <span class="fl">1</span>, <span class="fl">10</span><span class="op">)</span></span>
+<span>  , lambda_grid <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0.1</span>, <span class="fl">10</span>, length.out <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span>
 <span>  , name <span class="op">=</span> <span class="st">"ridge_model_example"</span></span>
 <span>  , n_folds <span class="op">=</span> <span class="fl">5</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -206,9 +207,9 @@ d’utilisation de cette fonction :</p>
 <span><span class="co">#&gt; Nom: ridge_model_example </span></span>
 <span><span class="co">#&gt; Nombre de predicteurs: 4 </span></span>
 <span><span class="co">#&gt; Nombre d'observations: 1000 </span></span>
-<span><span class="co">#&gt; Domaine de Lambda : [0.1, 10]  avec 3 valeurs et pas de 3.3</span></span>
-<span><span class="co">#&gt; Lambda optimal obtenu par validation croisee: 1 </span></span>
-<span><span class="co">#&gt; Erreur de validation croisee minimale: 0.4376131 </span></span>
+<span><span class="co">#&gt; Domaine de Lambda : [0.1, 10]  avec 100 valeurs et pas de 0.099</span></span>
+<span><span class="co">#&gt; Lambda optimal obtenu par validation croisee: 0.7 </span></span>
+<span><span class="co">#&gt; Erreur de validation croisee minimale: 0.4376129 </span></span>
 <span><span class="co">#&gt; Nombre de folds pour la validation croisee: 5</span></span></code></pre></div>
 </div>
 <div class="section level4">
@@ -225,11 +226,12 @@ d’utilisation de cette fonction :</p>
 <span><span class="va">predictions</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">ridge_model</span>, X <span class="op">=</span> <span class="va">new_data</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">predictions</span><span class="op">)</span></span>
 <span><span class="co">#&gt;         [,1]</span></span>
-<span><span class="co">#&gt; 1 78.8713440</span></span>
-<span><span class="co">#&gt; 2  0.8426937</span></span>
-<span><span class="co">#&gt; 3 21.2868170</span></span>
-<span><span class="co">#&gt; 4 38.5204649</span></span>
-<span><span class="co">#&gt; 5 16.3686934</span></span></code></pre></div>
+<span><span class="co">#&gt; 1 78.8706094</span></span>
+<span><span class="co">#&gt; 2  0.8430522</span></span>
+<span><span class="co">#&gt; 3 21.2870103</span></span>
+<span><span class="co">#&gt; 4 38.5205570</span></span>
+<span><span class="co">#&gt; 5 16.3690422</span></span>
+<span><span class="co">#&gt; 6 96.8250517</span></span></code></pre></div>
 <p>Il est tout a fait possible de faire des prédictions sur de nouvelles
 données en utilisant la fonction <code><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict()</a></code>. Il suffit juste
 de fournir l’objet du modèle de régression et les nouvelles données sur
@@ -243,8 +245,13 @@ d’utilisation de cette fonction :</p>
 <span><span class="va">new_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span><span class="op">)</span></span>
 <span><span class="va">predictions</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">ridge_model</span>, X <span class="op">=</span> <span class="va">new_data</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">predictions</span><span class="op">)</span></span>
-<span><span class="co">#&gt;             [,1]</span></span>
-<span><span class="co">#&gt; X_input 12.76577</span></span></code></pre></div>
+<span><span class="co">#&gt;         [,1]</span></span>
+<span><span class="co">#&gt; 1 78.8706094</span></span>
+<span><span class="co">#&gt; 2  0.8430522</span></span>
+<span><span class="co">#&gt; 3 21.2870103</span></span>
+<span><span class="co">#&gt; 4 38.5205570</span></span>
+<span><span class="co">#&gt; 5 16.3690422</span></span>
+<span><span class="co">#&gt; 6 96.8250517</span></span></code></pre></div>
 <p>Si par contre aucune donnée n’est fournie, la fonction
 <code><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict()</a></code> retournera les prédictions sur les données
 d’entraînement utilisées pour ajuster le modèle. Voici un exemple
@@ -253,12 +260,12 @@ d’utilisation de cette fonction sans fournir de nouvelles données :</p>
 <code class="sourceCode R"><span><span class="va">predictions</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">ridge_model</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">predictions</span><span class="op">)</span></span>
 <span><span class="co">#&gt;         [,1]</span></span>
-<span><span class="co">#&gt; 1 78.8713440</span></span>
-<span><span class="co">#&gt; 2  0.8426937</span></span>
-<span><span class="co">#&gt; 3 21.2868170</span></span>
-<span><span class="co">#&gt; 4 38.5204649</span></span>
-<span><span class="co">#&gt; 5 16.3686934</span></span>
-<span><span class="co">#&gt; 6 96.8254454</span></span></code></pre></div>
+<span><span class="co">#&gt; 1 78.8706094</span></span>
+<span><span class="co">#&gt; 2  0.8430522</span></span>
+<span><span class="co">#&gt; 3 21.2870103</span></span>
+<span><span class="co">#&gt; 4 38.5205570</span></span>
+<span><span class="co">#&gt; 5 16.3690422</span></span>
+<span><span class="co">#&gt; 6 96.8250517</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="visualisation-des-erreurs-de-validation-croisée">Visualisation des erreurs de validation croisée<a class="anchor" aria-label="anchor" href="#visualisation-des-erreurs-de-validation-crois%C3%A9e"></a>
