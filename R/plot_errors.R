@@ -3,12 +3,9 @@
 #'
 #' @param cv_error vecteur des erreurs de validation croisée
 #' @param lambda_grid vecteur des valeurs de pénalité
-#' @export
 #' @returns un graphique des erreurs de validation croisée
 #'  en fonction de la valeur de pénalité lambda
 #'
-#' @examples
-#'  plot_errors(cv_error = c(0.3, 0.4, 0.5), lambda_grid = c(0.1, 1, 10))
 plot_errors <- function(
     cv_error
     , lambda_grid

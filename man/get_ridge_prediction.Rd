@@ -21,8 +21,3 @@ La prediction associee aux donnees en entre
 \description{
 Fonction Permettant de generer des predictions pour les betas generes par la regression ridge
 }
-\examples{
-  get_ridge_prediction(
-  X_input = matrix(c(3.4, 1.2, 4.5, 0.7), ncol = 4, nrow = 1),
-   beta = matrix(1:5, nrow = 5, ncol = 1))
-}

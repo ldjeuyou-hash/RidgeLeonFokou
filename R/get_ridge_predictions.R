@@ -4,12 +4,7 @@
 #' @param beta les betas associés aux données d'entree permettant d'obtenir la valeur reponse selon ridge
 #'
 #' @returns La prediction associee aux donnees en entre
-#' @export
 #'
-#' @examples
-#'   get_ridge_prediction(
-#'   X_input = matrix(c(3.4, 1.2, 4.5, 0.7), ncol = 4, nrow = 1),
-#'    beta = matrix(1:5, nrow = 5, ncol = 1))
 get_ridge_prediction <- function(
     X_input = RidgeLeonFokou::X,
     beta = get_ridge_beta(X_input = RidgeLeonFokou::X, Y_input = RidgeLeonFokou::Y, lambda = 1)

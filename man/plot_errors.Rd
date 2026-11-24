@@ -20,6 +20,3 @@ en fonction de la valeur de pénalité lambda
 genere un graphique des erreurs de validation croisée
 en fonction de la valeur de pénalité lambda
 }
-\examples{
- plot_errors(cv_error = c(0.3, 0.4, 0.5), lambda_grid = c(0.1, 1, 10))
-}

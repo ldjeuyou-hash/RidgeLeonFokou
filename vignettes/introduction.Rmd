@@ -76,6 +76,7 @@ Voici une brève description de ces variables :
 - `ridge_model$lambda_grid` : La ou les valeurs de la pénalité utilisée pour ajuster le modèle
 - `ridge_model$X` : Les données d'entrée utilisées pour ajuster le modèle
 - `ridge_model$Y` : La variable de réponse utilisée pour ajuster le modèle
+- `ridge_model$cv_results` : Les résultats de la validation croisée pour les différentes valeurs de la pénalité (lambda)
 - `ridge_model$ideal_lambda` : La valeur de la pénalité idéale pour le modèle (c'est a dire la valeur de lambda qui minimise l'erreur de validation croisée)
 - `ridge_model$min_cv_error` : L'erreur de validation croisée minimale obtenue pour le modèle ajusté
 - `ridge_model$name` : Le nom du modèle de régression Ridge ajusté
