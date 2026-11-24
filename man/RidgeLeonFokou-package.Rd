@@ -12,6 +12,7 @@ Fournit une librairie pour l'estimation de modèles de régression Ridge et la v
 Useful links:
 \itemize{
   \item \url{https://github.com/ldjeuyou-hash/RidgeLeonFokou}
+  \item \url{https://ldjeuyou-hash.github.io/RidgeLeonFokou/}
   \item Report bugs at \url{https://github.com/ldjeuyou-hash/RidgeLeonFokou/issues}
 }
 

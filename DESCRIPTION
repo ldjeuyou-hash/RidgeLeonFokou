@@ -22,7 +22,7 @@ Imports:
     Rcpp
 LinkingTo: 
     Rcpp
-URL: https://github.com/ldjeuyou-hash/RidgeLeonFokou
+URL: https://github.com/ldjeuyou-hash/RidgeLeonFokou, https://ldjeuyou-hash.github.io/RidgeLeonFokou/
 BugReports: https://github.com/ldjeuyou-hash/RidgeLeonFokou/issues
 VignetteBuilder: knitr
 Config/Needs/website: rmarkdown
