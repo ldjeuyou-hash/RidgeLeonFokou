@@ -1,6 +1,6 @@
 Package: RidgeLeonFokou
 Title: Regression Ridge et Validation Croisée
-Version: 0.0.0.9000
+Version: 1.0.0
 Authors@R: 
     person("Leon", "Fokou", , "ldjeuyou@gmail.com", role = c("aut", "cre"))
 Description: Fournit une librairie pour l'estimation de modèles de régression Ridge et la validation croisée.

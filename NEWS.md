@@ -1,3 +1,3 @@
-# RidgeLeonFokou (development version)
+# RidgeLeonFokou 1.0.0
 
 * Initial CRAN submission.
