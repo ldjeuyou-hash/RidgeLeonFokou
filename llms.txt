@@ -26,8 +26,6 @@ et la validation croisée.
 - [`ridge()`](https://ldjeuyou-hash.github.io/RidgeLeonFokou/reference/ridge.md)
   : Fonction permettant de générer un objet de classe "ridge" à partir
   d'un dataframe et d'une valeur réponse donnée
-- [`select_lambda()`](https://ldjeuyou-hash.github.io/RidgeLeonFokou/reference/select_lambda.md)
-  : Selectionne le meilleur lambda en fonction des parametres entrés
 
 # Articles
 
