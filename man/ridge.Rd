@@ -31,3 +31,11 @@ un objet de classe "ridge"
 Fonction permettant de générer un objet de classe "ridge" à partir
 d'un dataframe et d'une valeur réponse donnée
 }
+\examples{
+ridge(X_input = RidgeLeonFokou::X
+,  Y_input = RidgeLeonFokou::Y
+, lambda_grid = 10^seq(from = -5, to = 5, by = 0.1)
+, n_folds = 5
+, name = "Object Ridge")
+
+}

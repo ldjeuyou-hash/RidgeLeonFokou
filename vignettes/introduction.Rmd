@@ -1,0 +1,25 @@
+---
+title: "Introduction a RidgeLeonFokou"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction a RidgeLeonFokou}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Introduction
+
+Cette document explique comment utiliser le package `RidgeLeonFokou` pour effectuer une régression 
+Ridge sur un ensemble de données. Le package fournit des fonctions pour ajuster un modèle de régression Ridge, 
+obtenir les coefficients estimés et faire des prédictions sur de nouvelles données.
+
+```{r setup}
+library(RidgeLeonFokou)
+```

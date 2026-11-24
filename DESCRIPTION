@@ -12,6 +12,8 @@ Depends:
     R (>= 3.5)
 LazyData: true
 Suggests: 
+    knitr,
+    rmarkdown,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Imports: 
@@ -22,3 +24,4 @@ LinkingTo:
     Rcpp
 URL: https://github.com/ldjeuyou-hash/RidgeLeonFokou
 BugReports: https://github.com/ldjeuyou-hash/RidgeLeonFokou/issues
+VignetteBuilder: knitr
