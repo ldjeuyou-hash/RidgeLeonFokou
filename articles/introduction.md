@@ -69,7 +69,7 @@ data("X")
 data("Y")
 
 # Créer un modèle de régression Ridge avec des valeurs de
-# pénalité (lambda) de 0.1, 1 et 10
+# pénalité (lambda) de 0 a 10 avec pas de 0.1
 ridge_model <- ridge(
   X_input = X
   , Y_input = Y
@@ -122,6 +122,10 @@ toutefois possible de fournir une seule valeur de pénalité (lambda) pour
 ajuster le modèle, mais dans ce cas, la validation croisée ne sera pas
 effectuée et la valeur de la pénalité fournie sera utilisée pour ajuster
 le modèle.
+
+Il est aussi possible de modifier le nombre de (folds) utilisés pour la
+validation croisée. Par défault, il est de 5 mais il est tout a fait
+possible de L’augmenter ou le diminuer a sa guise.
 
 ### Quelques fonctions utiles pour l’analyse du modèle
 
@@ -178,7 +182,7 @@ Il est tout a fait possible de faire des prédictions sur de nouvelles
 données en utilisant la fonction
 [`predict()`](https://rdrr.io/r/stats/predict.html). Il suffit juste de
 fournir l’objet du modèle de régression et les nouvelles données sur
-lesquelles vous souhaitez faire des prédictions. VOici un exemple
+lesquelles vous souhaitez faire des prédictions. Voici un exemple
 d’utilisation de cette fonction :
 
 ``` r
