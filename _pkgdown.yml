@@ -1,4 +1,5 @@
 url: https://ldjeuyou-hash.github.io/RidgeLeonFokou/
 template:
   bootstrap: 5
-
+home:
+  sidebar: false
