@@ -32,11 +32,14 @@ ridge <- function(
     length(name) == 1
   )
 
-  selection <- select_lambda(
-    X_input = X_input,
-    Y_input = Y_input,
-    lambda_grid = lambda_grid,
-    n_folds = n_folds
+  folds <- Folds(nfolds = n_folds, n = nrow(X_input))
+
+  cv_results <- cv_ridge_cpp(
+    X = X_input
+    , Y = Y_input
+    , lambda_grid = lambda_grid
+    , nfolds = n_folds
+    , folds = folds
   )
 
   structure(
@@ -45,16 +48,16 @@ ridge <- function(
       , Y = Y_input
       , lambda_grid = lambda_grid
       , n_folds = n_folds
-      , ideal_lambda = selection$lambda
-      , min_cv_error = selection$cv_error
+      , cv_results = cv_results
+      , ideal_lambda = cv_results$lambda[which.min(cv_results$cv_error)]
+      , min_cv_error = min(cv_results$cv_error)
       , betas = get_ridge_beta(
-          X_input = X_input,
-          Y_input = Y_input,
-          lambda = selection$lambda
+          X_input = X_input
+          , Y_input = Y_input
+          , lambda = cv_results$lambda[which.min(cv_results$cv_error)]
         )
       , name = name
     ),
     class = "ridge"
   )
 }
-
