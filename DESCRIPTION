@@ -25,3 +25,4 @@ LinkingTo:
 URL: https://github.com/ldjeuyou-hash/RidgeLeonFokou
 BugReports: https://github.com/ldjeuyou-hash/RidgeLeonFokou/issues
 VignetteBuilder: knitr
+Config/Needs/website: rmarkdown
