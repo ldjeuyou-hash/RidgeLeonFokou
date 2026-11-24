@@ -2,7 +2,7 @@
 title: "Introduction a RidgeLeonFokou"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Introduction a RidgeLeonFokou}
+  %\VignetteIndexEntry{Introduction}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
