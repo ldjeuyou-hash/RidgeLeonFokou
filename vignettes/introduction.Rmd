@@ -58,7 +58,7 @@ data("X")
 data("Y")
 
 # Créer un modèle de régression Ridge avec des valeurs de
-# pénalité (lambda) de 0.1, 1 et 10
+# pénalité (lambda) de 0 a 10 avec pas de 0.1
 ridge_model <- ridge(
   X_input = X
   , Y_input = Y
@@ -90,6 +90,8 @@ names(ridge_model)
 Il est a noter que ce modele de régression Ridge est ajusté en utilisant la validation croisée pour sélectionner la meilleure valeur de la pénalité (lambda) parmi les valeurs fournies dans `lambda_grid`.
 Il est toutefois possible de fournir une seule valeur de pénalité (lambda) pour ajuster le modèle, mais dans ce cas, la validation croisée ne sera pas effectuée et la valeur de la pénalité fournie sera utilisée pour ajuster le modèle.
 
+Il est aussi possible de modifier le nombre de (folds) utilisés pour la validation croisée. Par défault, il est de 5 mais il est tout a fait possible de L'augmenter ou le diminuer a sa guise.
+
 ## Quelques fonctions utiles pour l'analyse du modèle
 Le package `RidgeLeonFokou` fournit également plusieurs fonctions utiles pour analyser le modèle de régression Ridge ajusté. 
 Voici quelques-unes de ces fonctions :
@@ -112,7 +114,7 @@ head(predictions)
 ``` 
 
 Il est tout a fait possible de faire des prédictions sur de nouvelles données en utilisant la fonction `predict()`.
-Il suffit juste de fournir l'objet du modèle de régression et les nouvelles données sur lesquelles vous souhaitez faire des prédictions. VOici un exemple d'utilisation de cette fonction :
+Il suffit juste de fournir l'objet du modèle de régression et les nouvelles données sur lesquelles vous souhaitez faire des prédictions. Voici un exemple d'utilisation de cette fonction :
 ```{r}
 # Créer de nouvelles données pour la prédiction à partir des données test
 # Faire attention à la dimension des nouvelles données, elles doivent
