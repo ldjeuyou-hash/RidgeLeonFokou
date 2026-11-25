@@ -64,39 +64,6 @@
 indices des folds pour chaque observation</p>
     </div>
 
-    <div class="section level2">
-    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span> <span class="fu">Folds</span><span class="op">(</span>nfolds <span class="op">=</span> <span class="fl">5</span>, n <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="fu">RidgeLeonFokou</span><span class="fu">::</span><span class="va"><a href="X.html">X</a></span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    [1] 3 2 5 3 5 5 4 4 2 2 1 2 2 2 1 2 2 3 1 2 2 2 5 3 4 5 2 1 5 2 5 2 4 5 2 1 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [38] 3 4 4 2 5 5 1 1 2 5 4 5 4 2 2 2 5 3 4 1 3 2 5 3 5 4 3 1 1 1 4 1 1 3 1 5 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [75] 4 3 1 1 1 2 3 2 2 4 5 2 2 3 1 5 2 3 4 2 3 2 1 4 3 2 5 2 2 1 3 4 5 3 4 2 4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [112] 3 4 3 3 4 3 3 2 3 1 1 2 1 3 2 2 1 3 5 5 4 1 4 3 3 2 1 4 3 4 5 4 3 4 2 2 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [149] 4 5 5 5 4 3 5 3 5 5 2 5 3 3 2 4 2 1 2 2 1 4 2 4 2 3 5 4 4 4 1 3 2 2 1 3 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [186] 2 3 4 3 1 2 3 5 1 4 4 3 1 2 1 5 4 5 1 2 4 5 1 5 4 1 5 2 3 2 3 5 1 5 3 2 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [223] 4 3 2 3 2 2 4 1 2 2 3 4 5 2 5 2 2 2 1 2 1 1 4 1 1 3 1 1 4 3 4 5 4 2 2 3 4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [260] 2 4 1 4 4 4 4 1 3 1 5 5 1 2 1 3 2 4 5 3 4 3 4 1 2 5 2 2 2 4 5 2 5 4 5 3 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [297] 5 2 4 2 3 3 3 5 3 2 4 4 5 1 1 2 3 1 1 4 4 3 4 4 2 2 4 4 3 2 4 2 5 3 3 4 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [334] 5 3 2 1 4 4 5 5 1 2 2 4 1 5 4 3 1 2 4 3 5 5 4 1 2 5 2 3 4 5 4 5 4 4 4 3 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [371] 2 4 1 1 1 3 2 2 3 1 4 4 4 1 4 2 5 3 4 3 3 1 3 3 5 5 1 5 4 4 3 1 1 3 3 4 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [408] 1 4 1 4 1 1 3 5 4 5 4 3 3 1 5 5 1 1 3 2 1 1 2 2 4 5 1 2 4 4 1 4 2 1 1 2 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [445] 5 3 4 3 4 1 4 1 3 4 1 5 1 4 1 4 5 4 3 1 5 5 4 5 4 2 4 1 3 1 5 5 4 3 1 4 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [482] 5 5 3 1 1 3 3 4 2 3 5 2 2 3 5 2 1 2 1 1 4 4 5 1 3 2 3 3 3 2 1 1 1 1 2 3 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [519] 5 3 1 4 1 2 2 5 2 2 4 4 1 3 5 3 5 5 1 3 5 4 5 4 2 5 3 1 1 2 3 3 5 2 1 1 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [556] 5 1 1 2 1 4 5 1 4 4 2 3 4 1 3 5 5 5 2 2 4 5 3 2 3 5 5 2 5 2 4 1 4 2 2 5 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [593] 2 4 2 3 2 2 5 3 1 4 2 5 3 1 3 2 5 1 2 3 3 2 5 3 3 5 2 3 2 1 4 5 3 3 3 4 4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [630] 3 3 3 4 1 1 5 5 2 1 3 5 3 1 1 1 2 3 1 2 1 2 1 3 2 1 1 2 1 1 3 5 5 1 3 3 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [667] 4 5 3 1 4 5 2 4 5 1 4 3 3 2 1 4 5 2 3 2 1 3 4 4 4 3 5 1 5 5 4 1 4 1 2 5 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [704] 3 5 1 3 5 1 5 2 2 3 4 5 5 5 5 5 4 3 5 1 5 1 5 1 2 4 2 5 3 3 3 4 5 3 2 5 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [741] 4 3 4 5 4 5 3 1 1 4 4 1 3 2 5 3 2 4 2 4 1 5 2 5 5 1 3 5 3 3 5 3 4 2 3 1 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [778] 1 4 2 1 5 3 2 5 2 5 2 5 2 2 4 1 4 1 1 3 5 5 5 3 1 1 5 2 5 4 3 3 4 1 1 4 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [815] 1 2 5 3 5 4 2 2 3 2 1 5 5 3 2 1 4 5 5 1 5 4 4 3 5 4 3 5 1 4 5 5 4 2 5 5 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [852] 2 4 3 2 5 5 1 3 2 4 1 4 3 2 2 5 4 5 2 1 4 5 1 4 5 2 5 5 1 4 3 3 4 5 1 1 4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [889] 3 3 2 3 4 1 2 2 4 4 4 1 2 4 5 2 4 3 1 3 2 4 4 4 3 4 5 3 2 1 3 3 3 4 1 5 4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [926] 5 4 2 3 1 4 4 5 1 2 3 3 5 1 3 5 4 2 5 4 2 3 4 1 5 2 3 4 1 5 3 2 2 1 4 2 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [963] 1 2 3 1 1 2 5 5 3 3 5 2 4 4 1 3 1 4 1 1 3 1 5 5 2 5 1 2 4 2 4 5 5 1 1 4 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1000] 1</span>
-</code></pre></div>
-    </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
 

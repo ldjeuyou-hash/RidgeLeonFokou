@@ -54,7 +54,7 @@ ridge(X_input = RidgeLeonFokou::X
 #> Nombre de predicteurs: 4 
 #> Nombre d'observations: 1000 
 #> Domaine de Lambda : [1e-05, 1e+05]  avec 101 valeurs et pas de 990.099
-#> Lambda optimal obtenu par validation croisee: 1.584893 
-#> Erreur de validation croisee minimale: 0.4439006 
+#> Lambda optimal obtenu par validation croisee: 0.7943282 
+#> Erreur de validation croisee minimale: 0.4376129 
 #> Nombre de folds pour la validation croisee: 5 
 ```
