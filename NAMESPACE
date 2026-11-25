@@ -3,7 +3,6 @@
 S3method(plot,ridge)
 S3method(predict,ridge)
 S3method(print,ridge)
-export(Folds)
 export(ridge)
 importFrom(Rcpp,sourceCpp)
 useDynLib(RidgeLeonFokou, .registration = TRUE)

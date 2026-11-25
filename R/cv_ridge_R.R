@@ -5,10 +5,8 @@
 #'
 #' @returns un vecteur de longueur n contenant les
 #' indices des folds pour chaque observation
-#' @export
 #'
-#' @examples
-#'  Folds(nfolds = 5, n = nrow(RidgeLeonFokou::X))
+#' 
 Folds <- function(
     nfolds = 5
     , n
