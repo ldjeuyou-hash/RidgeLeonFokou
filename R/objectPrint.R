@@ -1,3 +1,9 @@
+#' Fonction permettant d'afficher les informations sur un objet de classe ridge
+#'
+#' @param x un objet de classe ridge
+#'
+#' @param ... paramètres supplémentaires pour la fonction print
+#'
 #' @export
 print.ridge <- function(
     x
