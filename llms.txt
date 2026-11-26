@@ -20,9 +20,19 @@ et la validation croisée.
 - [`get_ridge_prediction()`](https://ldjeuyou-hash.github.io/RidgeLeonFokou/reference/get_ridge_prediction.md)
   : Fonction Permettant de generer des predictions pour les betas
   generes par la regression ridge
+- [`plot(`*`<ridge>`*`)`](https://ldjeuyou-hash.github.io/RidgeLeonFokou/reference/plot.ridge.md)
+  : Fonction permettant de tracer un graphe des erreurs de validation
+  croisée pour la regression ridge pour chaque valeur de pénalité en
+  parametre
 - [`plot_errors()`](https://ldjeuyou-hash.github.io/RidgeLeonFokou/reference/plot_errors.md)
   : genere un graphique des erreurs de validation croisée en fonction de
   la valeur de pénalité lambda
+- [`predict(`*`<ridge>`*`)`](https://ldjeuyou-hash.github.io/RidgeLeonFokou/reference/predict.ridge.md)
+  : Fonction permettant de prédire les valeurs de la variable réponse
+  pour un objet de classe ridge
+- [`print(`*`<ridge>`*`)`](https://ldjeuyou-hash.github.io/RidgeLeonFokou/reference/print.ridge.md)
+  : Fonction permettant d'afficher les informations sur un objet de
+  classe ridge
 - [`ridge()`](https://ldjeuyou-hash.github.io/RidgeLeonFokou/reference/ridge.md)
   : Fonction permettant de générer un objet de classe "ridge" à partir
   d'un dataframe et d'une valeur réponse donnée
